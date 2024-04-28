@@ -33,6 +33,7 @@ namespace WebApplication1.Brokers.FileBrokers
                     break;
                 }
             }
+            this.WriteAllStudents(students);
 
             return student;
         }
@@ -48,7 +49,17 @@ namespace WebApplication1.Brokers.FileBrokers
 
         public Student Update(Student student)
         {
-            throw new NotImplementedException();
+            List <Student> students = this.Get();
+            for(int i = 0; i < students.Count; i++)
+            {
+                if (students[i].Id == student.Id)
+                {
+                    students[i].Name = student.Name;
+                }
+            }
+            this.WriteAllStudents(students);
+
+            return student;
         }
          
         void EnsureFileExsists()

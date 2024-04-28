@@ -26,5 +26,17 @@ namespace WebApplication1.Controllers
         {
             return fileBroker.Add(student);
         }
+
+        [HttpPut(Name = "UpdateStudenst")]
+        public Student UpdateStudent(Student student)
+        {
+            return fileBroker.Update(student);
+        }
+
+        [HttpDelete(Name = "DeleteStudent")]
+        public Student DeleteStudent(Student student)
+        {
+            return fileBroker.Delete(student.Id);
+        }
     }
 }
